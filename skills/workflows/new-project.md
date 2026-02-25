@@ -1,0 +1,237 @@
+# New Project
+
+## Metadata
+- Last updated: 2026-02-25
+- Version: 1.0
+- Changelog:
+  - v1.0: Initial workflow
+
+## Purpose
+Start a brand new project from scratch. This is the most important workflow in the toolkit.
+It replaces ad-hoc project kickoffs with a structured, guided process that produces a
+complete PRD, project repo, and design proof before any features are built.
+
+Use this whenever Scott says something like "let's start a new project" or "I want to build..."
+
+## Prerequisites
+- The toolkit repo exists at ~/scott-toolkit/
+- Scott has a rough idea of what he wants to build (doesn't need to be detailed)
+
+## Instructions for Claude Code
+Walk Scott through each phase one at a time. Do NOT skip ahead. At each phase:
+1. Explain what this phase is about and why it matters
+2. Ask the questions listed
+3. Draft the output based on Scott's answers
+4. Show it to Scott for approval before moving to the next phase
+
+Be conversational. If Scott's answers are vague, ask follow-up questions. If he's
+unsure about something, help him think through it. The goal is to pull the project
+out of his head and into a structured document.
+
+Do NOT start writing code until Phase 5 (Create Repository).
+
+## Phase 1: Brain Dump
+
+### What this phase does
+Get everything out of Scott's head. Capture the raw idea without organizing it yet.
+This is intentionally unstructured — the goal is quantity over quality.
+
+### Questions to ask Scott
+1. What do you want to build? Describe it like you're explaining it to a friend.
+2. Who is this for? (You? A team at Advosy? Brett? Customers?)
+3. What problem does it solve? What's frustrating about the current situation?
+4. What's the most important thing it needs to do? (The one feature it can't ship without)
+5. Do you have any visual inspiration? (Apps you like the look of, screenshots, Figma files?)
+6. Desktop app, web app, or both?
+7. Will this eventually go to Gary for production, or is it just a prototype?
+8. Anything else bouncing around in your head about this?
+
+### Output
+A raw brain dump document — bullet points, notes, and answers. Not organized yet.
+
+### Done when
+Scott says "I think that's everything" or "that covers it."
+
+## Phase 2: Clarify & Challenge
+
+### What this phase does
+Review the brain dump with a critical eye. Poke holes. Find gaps. Challenge assumptions.
+This is where vague ideas get sharpened into clear requirements.
+
+### Questions to ask Scott
+Based on the brain dump, identify and ask about:
+1. **Gaps:** "You mentioned [X] but didn't say how [Y] would work. How do you see that?"
+2. **Assumptions:** "It sounds like you're assuming [X]. Is that right? What if [Y]?"
+3. **Scope:** "You mentioned [X], [Y], and [Z]. For v1, which of these are must-haves vs nice-to-haves?"
+4. **Users:** "You said this is for [X]. Walk me through their typical day — when would they use this?"
+5. **Data:** "What are the main 'things' in this app? What information does each one have?"
+6. **Conflicts:** "You said [X] earlier but also [Y] — those seem to conflict. Which takes priority?"
+
+### Output
+A cleaned-up version of the brain dump with gaps filled and contradictions resolved.
+
+### Done when
+Scott has answered all clarifying questions and no major gaps remain.
+
+## Phase 3: Draft PRD
+
+### What this phase does
+Load the PRD template from ~/scott-toolkit/templates/PRD-TEMPLATE.md and walk through
+it section by section, using the brain dump answers as the starting material.
+
+### How to do it
+1. Read ~/scott-toolkit/templates/PRD-TEMPLATE.md
+2. For each section (1-11):
+   a. Explain what this section is about (use the template's guidance comments)
+   b. Draft the content using the brain dump and clarification answers
+   c. Present the draft to Scott
+   d. Get Scott's approval or make changes
+   e. Move to the next section
+3. Pay special attention to:
+   - Section 3 (Features): Push Scott to prioritize ruthlessly
+   - Section 4 (User Flows): Make these concrete and step-by-step
+   - Section 5 (Data Model): Get the tables and relationships right
+   - Section 8 (Milestones): Milestone 1 = data model + basic CRUD always
+
+### Output
+A complete PRD draft with all 11 sections filled in.
+
+### Done when
+Scott has approved every section of the PRD.
+
+## Phase 4: Finalize PRD
+
+### What this phase does
+Review the complete PRD as a whole. Check for internal contradictions, gaps,
+and unrealistic scope.
+
+### Checks to perform
+1. Do the features in Section 3 match the user flows in Section 4?
+2. Does the data model in Section 5 support all the features?
+3. Do the milestones in Section 8 cover all the features?
+4. Is Section 3 scoped realistically for v1?
+5. Are there any technical concerns based on the deployment target?
+6. Do the user flows cover empty states and error states?
+
+### Output
+A finalized PRD saved as `PRD.md` in the project repo.
+
+### Done when
+Scott confirms the PRD is complete and accurate.
+
+## Phase 5: Create Repository
+
+### What this phase does
+Set up the project repo with the proper file structure and configuration files.
+
+### Steps
+1. Create the project directory (in ~/Sites/ for Advosy/Bresco, ~/Sites/personal/ for personal)
+2. Initialize git
+3. Read ~/scott-toolkit/templates/FILE-STRUCTURE-TEMPLATE.md
+4. Create the directory structure matching the deployment target (web/desktop/both)
+5. Generate CLAUDE.md from ~/scott-toolkit/templates/CLAUDE-MD-TEMPLATE.md:
+   - Fill in project context from the PRD
+   - Fill in tech stack (standard + any project-specific additions)
+   - List relevant toolkit skill files in External References
+   - Fill in project architecture based on deployment target
+   - Fill in constraints and rules from the PRD
+6. Save the finalized PRD as PRD.md
+7. Create tasks/todo.md with Milestone 1 tasks
+8. Create tasks/lessons.md (empty, with header)
+9. Create initial commit
+
+### Output
+A fully initialized project repo with CLAUDE.md, PRD.md, directory structure, and task tracking files.
+
+### Done when
+The repo exists, has proper structure, and initial commit is made.
+
+## Phase 6: Design Proof
+
+### What this phase does
+Before building any features, establish the visual design. This prevents building
+10 pages and then realizing the look is wrong.
+
+### Steps
+1. Read the PRD's Design Intent section (Section 9)
+2. If a Design Intent document exists, read it
+3. If Scott provided reference screenshots or URLs:
+   - Analyze them for design patterns (color palettes, spacing rhythms, typography, layout structures)
+   - Use these to inform design token choices
+4. If Figma wireframes were provided:
+   - Use the Figma MCP integration to read them
+   - Extract layout patterns and component structures
+5. Generate design tokens:
+   - Tailwind CSS custom properties (colors, spacing, typography) in the CSS config
+   - Nuxt UI theme configuration in app.config.ts
+6. Build ONE representative page:
+   - Usually the most important page (often the main list or dashboard view)
+   - Include real-looking sample data (not lorem ipsum)
+   - Apply all design tokens
+7. Present to Scott for feedback
+8. Iterate on colors, spacing, typography, and component styles until approved
+9. Once approved, this design system applies to all subsequent pages
+
+### Output
+- Design tokens configured (Tailwind CSS + Nuxt UI theme)
+- One representative page built as a visual proof
+- Scott's approval to proceed with this design
+
+### Done when
+Scott approves the visual design of the representative page.
+
+## Phase 7: Build Milestone 1
+
+### What this phase does
+Begin building the first milestone (usually data model + basic CRUD).
+
+### Steps
+1. Read tasks/todo.md for the milestone tasks
+2. Read tasks/lessons.md (may be empty for first milestone)
+3. Work through tasks, following the CLAUDE.md behavior rules:
+   - Enter plan mode for non-trivial tasks
+   - Verify each task works before marking it complete
+   - Update tasks/todo.md as you go
+4. Work autonomously on implementation — don't ask Scott for permission to fix bugs or write code
+5. Check in at the end of the milestone for review
+
+### Output
+A working first milestone with all tasks completed and verified.
+
+### Done when
+All Milestone 1 tasks are complete and the app runs without errors.
+
+## Phase 8: Milestone Review
+
+### What this phase does
+Demo what was built and get Scott's feedback before proceeding.
+
+### Steps
+1. Summarize what was built in Milestone 1
+2. Show the current state of the app (describe what Scott would see)
+3. List any issues or concerns discovered during the build
+4. Get Scott's feedback
+5. Update CLAUDE.md's Current Status section
+6. Discuss next milestone or scope adjustments
+
+### Output
+- Updated CLAUDE.md with current status
+- Clear direction for next milestone
+
+### Done when
+Scott confirms the milestone is acceptable and gives direction for what's next.
+
+## Completion Checklist
+- [ ] Brain dump captured
+- [ ] Clarifying questions answered
+- [ ] PRD complete (all 11 sections)
+- [ ] PRD reviewed for consistency
+- [ ] Project repo created with proper structure
+- [ ] CLAUDE.md generated and populated
+- [ ] tasks/todo.md created with Milestone 1 tasks
+- [ ] tasks/lessons.md created
+- [ ] Design tokens configured
+- [ ] Design proof page built and approved
+- [ ] Milestone 1 built and verified
+- [ ] Milestone review completed
+- [ ] CLAUDE.md updated with current status
