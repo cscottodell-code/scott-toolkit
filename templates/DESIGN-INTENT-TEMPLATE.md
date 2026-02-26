@@ -25,6 +25,12 @@ NOTE: This template is pending detailed specification. Scott will flesh it out i
 follow-up session. Use the high-level scope below as a starting guide.
 -->
 
+> **Interactive alternative:** Instead of filling this out manually, run
+> `/impeccable:teach-impeccable` in your project. It scans your codebase,
+> asks about brand and aesthetic direction, and writes design context directly
+> to CLAUDE.md. Use this template for a standalone document; use teach-impeccable
+> for a faster conversational approach.
+
 ---
 
 ## 1. Reference Examples

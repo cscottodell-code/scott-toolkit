@@ -2,8 +2,9 @@
 
 ## Metadata
 - Last updated: 2026-02-25
-- Version: 1.0
+- Version: 1.1
 - Changelog:
+  - v1.1: Replace binary Gary question with 3 work contexts (Personal/Advosy/Bresco), integrate Impeccable plugin into Design Proof (Phase 6), Build (Phase 7), and Milestone Review (Phase 8) phases
   - v1.0: Initial workflow
 
 ## Purpose
@@ -43,7 +44,10 @@ This is intentionally unstructured — the goal is quantity over quality.
 4. What's the most important thing it needs to do? (The one feature it can't ship without)
 5. Do you have any visual inspiration? (Apps you like the look of, screenshots, Figma files?)
 6. Desktop app, web app, or both?
-7. Will this eventually go to Gary for production, or is it just a prototype?
+7. Which work context is this for?
+   - **Personal** — Solo project, you deploy and maintain it yourself
+   - **Advosy** — Work project, may hand off to Gary for production
+   - **Bresco** — Co-developing with Brett, shared ownership
 8. Anything else bouncing around in your head about this?
 
 ### Output
@@ -125,7 +129,10 @@ Scott confirms the PRD is complete and accurate.
 Set up the project repo with the proper file structure and configuration files.
 
 ### Steps
-1. Create the project directory (in ~/Sites/ for Advosy/Bresco, ~/Sites/personal/ for personal)
+1. Create the project directory based on work context:
+   - Personal → ~/Sites/personal/[project-name]
+   - Advosy → ~/Sites/advosy/[project-name]
+   - Bresco → ~/Sites/bresco/[project-name]
 2. Initialize git
 3. Read ~/scott-toolkit/templates/FILE-STRUCTURE-TEMPLATE.md
 4. Create the directory structure matching the deployment target (web/desktop/both)
@@ -153,28 +160,36 @@ Before building any features, establish the visual design. This prevents buildin
 10 pages and then realizing the look is wrong.
 
 ### Steps
-1. Read the PRD's Design Intent section (Section 9)
-2. If a Design Intent document exists, read it
-3. If Scott provided reference screenshots or URLs:
+1. Run `/impeccable:teach-impeccable` — one-time design context setup that scans the codebase,
+   asks about brand and aesthetic direction, and writes design context to CLAUDE.md
+2. Read the PRD's Design Intent section (Section 9)
+3. If a Design Intent document exists, read it
+4. If Scott provided reference screenshots or URLs:
    - Analyze them for design patterns (color palettes, spacing rhythms, typography, layout structures)
    - Use these to inform design token choices
-4. If Figma wireframes were provided:
+5. If Figma wireframes were provided:
    - Use the Figma MCP integration to read them
    - Extract layout patterns and component structures
-5. Generate design tokens:
+6. Generate design tokens:
    - Tailwind CSS custom properties (colors, spacing, typography) in the CSS config
    - Nuxt UI theme configuration in app.config.ts
-6. Build ONE representative page:
+7. Build ONE representative page using `/impeccable:frontend-design`:
    - Usually the most important page (often the main list or dashboard view)
    - Include real-looking sample data (not lorem ipsum)
    - Apply all design tokens
-7. Present to Scott for feedback
-8. Iterate on colors, spacing, typography, and component styles until approved
-9. Once approved, this design system applies to all subsequent pages
+8. Run `/impeccable:critique` for UX feedback — assess visual hierarchy, information
+   architecture, and overall design quality
+9. Iterate with Scott — offer these adjustment tools as needed:
+   - `/impeccable:bolder` — amplify safe or boring designs for more visual impact
+   - `/impeccable:quieter` — tone down overly bold or aggressive designs
+   - `/impeccable:colorize` — add strategic color to monochromatic areas
+10. Get Scott's approval — once approved, this design system applies to all subsequent pages
 
 ### Output
+- Impeccable design context established in CLAUDE.md
 - Design tokens configured (Tailwind CSS + Nuxt UI theme)
 - One representative page built as a visual proof
+- Design critique reviewed and addressed
 - Scott's approval to proceed with this design
 
 ### Done when
@@ -193,7 +208,9 @@ Begin building the first milestone (usually data model + basic CRUD).
    - Verify each task works before marking it complete
    - Update tasks/todo.md as you go
 4. Work autonomously on implementation — don't ask Scott for permission to fix bugs or write code
-5. Check in at the end of the milestone for review
+5. When building pages with significant UI, use `/impeccable:frontend-design` for high-quality output
+6. For error/edge case hardening on key pages, use `/impeccable:harden`
+7. Check in at the end of the milestone for review
 
 ### Output
 A working first milestone with all tasks completed and verified.
@@ -207,12 +224,17 @@ All Milestone 1 tasks are complete and the app runs without errors.
 Demo what was built and get Scott's feedback before proceeding.
 
 ### Steps
-1. Summarize what was built in Milestone 1
-2. Show the current state of the app (describe what Scott would see)
-3. List any issues or concerns discovered during the build
-4. Get Scott's feedback
-5. Update CLAUDE.md's Current Status section
-6. Discuss next milestone or scope adjustments
+1. Run `/impeccable:audit` — comprehensive quality check across accessibility,
+   performance, theming, responsive design, and AI slop detection
+2. Run `/impeccable:polish` — final detail pass for alignment, spacing, consistency,
+   and interaction states
+3. Summarize what was built in Milestone 1
+4. Present audit results alongside the milestone summary
+5. Show the current state of the app (describe what Scott would see)
+6. List any issues or concerns discovered during the build
+7. Get Scott's feedback
+8. Update CLAUDE.md's Current Status section
+9. Discuss next milestone or scope adjustments
 
 ### Output
 - Updated CLAUDE.md with current status
@@ -230,8 +252,12 @@ Scott confirms the milestone is acceptable and gives direction for what's next.
 - [ ] CLAUDE.md generated and populated
 - [ ] tasks/todo.md created with Milestone 1 tasks
 - [ ] tasks/lessons.md created
+- [ ] Impeccable design context established (teach-impeccable)
 - [ ] Design tokens configured
 - [ ] Design proof page built and approved
+- [ ] Design critique reviewed and addressed
 - [ ] Milestone 1 built and verified
+- [ ] Design audit completed (Phase 8)
+- [ ] Polish pass completed (Phase 8)
 - [ ] Milestone review completed
 - [ ] CLAUDE.md updated with current status

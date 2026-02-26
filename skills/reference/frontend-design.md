@@ -12,6 +12,12 @@ This skill teaches Claude Code how to implement design intent using Nuxt UI v4 a
 Tailwind CSS v4, producing distinctive UI that avoids generic AI aesthetics. It covers
 theming, design tokens, layout patterns, component composition, and anti-patterns.
 
+**Relationship with Impeccable:** The Impeccable plugin (`/impeccable:*` commands) handles
+design generation, critique, and iteration — it decides *what* to design and evaluates
+quality. This file remains the Nuxt UI v4-specific technical reference — it covers *how*
+to build designs using theming, tokens, layout patterns, and Figma integration. They
+complement each other: Impeccable = what to design, this file = how to build it in Nuxt UI.
+
 ## Theming Nuxt UI v4
 
 ### Semantic colors (7 total)
@@ -275,20 +281,26 @@ Create visual hierarchy without making everything bold:
 
 When starting a new project's Design Proof phase:
 
-1. **Read the Design Intent document** — Extract colors, typography, layout preferences
-2. **If reference screenshots/URLs were provided:**
+1. **Run `/impeccable:teach-impeccable`** — One-time setup that scans the codebase, asks about
+   brand and aesthetic direction, and writes design context to CLAUDE.md
+2. **Read the Design Intent document** — Extract colors, typography, layout preferences
+3. **If reference screenshots/URLs were provided:**
    - Analyze them for patterns: color palette, spacing rhythm, typography scale
    - Note the grid system, card styles, navigation patterns
    - Extract what makes it distinctive (not just "looks nice")
-3. **Generate design tokens:**
+4. **Generate design tokens:**
    - Set `primary`, `secondary`, `neutral` colors in `app.config.ts`
    - Configure typography via Tailwind CSS `@theme`
    - Set component defaults in `app.config.ts`
-4. **Build ONE representative page:**
+5. **Build ONE representative page using `/impeccable:frontend-design`:**
    - Usually the main list/dashboard view
    - Include real-looking sample data (not "Lorem ipsum")
    - Apply all design tokens and component overrides
-5. **Present to Scott** — Get feedback, iterate, then apply everywhere
+6. **Run `/impeccable:critique`** — Get UX feedback on visual hierarchy, information
+   architecture, and overall design quality
+7. **Iterate with Scott** — Use `/impeccable:bolder`, `/impeccable:quieter`, or
+   `/impeccable:colorize` as adjustment tools based on feedback
+8. **Present to Scott** — Get final approval, then apply the design system everywhere
 
 ## Figma Integration
 

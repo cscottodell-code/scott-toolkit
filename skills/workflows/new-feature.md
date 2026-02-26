@@ -2,8 +2,9 @@
 
 ## Metadata
 - Last updated: 2026-02-25
-- Version: 1.0
+- Version: 1.1
 - Changelog:
+  - v1.1: Add optional Impeccable design review step (critique + polish) to Build phase for UI-heavy features
   - v1.0: Initial workflow
 
 ## Purpose
@@ -97,6 +98,11 @@ Implement the feature.
 4. Build the feature, following the project's CLAUDE.md behavior rules
 5. Verify each task works before marking it complete
 6. Test the complete feature end-to-end
+7. Design review (if the feature has significant UI changes):
+   - Run `/impeccable:critique` for visual quality feedback
+   - Address critical issues
+   - Run `/impeccable:polish` as a final detail pass
+   Skip for backend-only changes or minor UI tweaks.
 
 ### Output
 Working feature, verified and tested.
@@ -126,5 +132,6 @@ CLAUDE.md accurately reflects the current state of the project.
 - [ ] Impact on existing code assessed
 - [ ] Mini-PRD written and approved
 - [ ] Feature built and verified
+- [ ] Design review completed (if UI-heavy feature)
 - [ ] CLAUDE.md updated
 - [ ] tasks/todo.md updated
