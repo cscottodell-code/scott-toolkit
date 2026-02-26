@@ -37,6 +37,8 @@ and how it went.
 2. PRD.md (to compare what was planned vs what was built)
 3. tasks/lessons.md (mistakes and corrections already captured)
 4. Recent git log (to see the build progression)
+5. ~/scott-toolkit/errors/ — any error logs captured during this project
+6. ~/scott-toolkit/successes/ — any success logs captured during this project
 
 ### Output
 A brief summary presented to Scott:
@@ -59,12 +61,14 @@ Walk Scott through the retro template questions to capture his thoughts.
 2. Were there any moments where something worked better than expected?
 3. Which toolkit skills or templates were most helpful?
 4. Any patterns you'd want to reuse?
+5. Did you capture any success logs during this project? Let's review them.
 
 **What went wrong:**
 1. What caused the most frustration?
 2. Did Claude Code get anything wrong repeatedly?
 3. Were there any missing skills or references that would have helped?
 4. Was there information you wish you'd had from the start?
+5. Did you capture any error logs during this project? Let's review them.
 
 **Lessons learned:**
 1. Based on what went wrong, what would you do differently next time?
@@ -106,8 +110,9 @@ The most important phase. Based on the lessons learned, propose specific changes
 to toolkit files.
 
 ### Steps
-1. Review Section 5 (Toolkit Updates Needed) from the retro document
-2. For each proposed update:
+1. Review error logs in ~/scott-toolkit/errors/ for recurring patterns that suggest a skill or template change
+2. Review Section 5 (Toolkit Updates Needed) from the retro document
+3. For each proposed update:
    a. Identify the specific file to change
    b. Describe the specific change needed
    c. Explain why this change would have helped

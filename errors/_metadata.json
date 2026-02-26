@@ -1,0 +1,4 @@
+{
+  "next_id": 1,
+  "description": "Counter for error log IDs. Incremented each time /scott:log-error creates a new entry."
+}

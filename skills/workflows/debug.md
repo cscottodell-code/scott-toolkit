@@ -115,6 +115,8 @@ If this was a non-obvious bug, document it so it doesn't happen again.
 2. Should this be added to tasks/lessons.md?
 3. Is this a pattern worth adding to a toolkit reference skill?
 4. Could better error handling have caught this earlier?
+5. If this bug was caused by a prompting, context, or harness mistake, consider
+   running `/scott:log-error` to capture it in detail.
 
 ### Steps
 1. If it's a project-specific lesson: Add to tasks/lessons.md
@@ -134,3 +136,4 @@ The lesson is documented (or determined not worth documenting).
 - [ ] Hypotheses ranked
 - [ ] Fix implemented and verified
 - [ ] Lesson captured (if applicable)
+- [ ] If caused by user error: logged with /scott:log-error
