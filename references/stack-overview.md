@@ -84,3 +84,16 @@ scheduled tasks, or webhook receivers from external services. When needed:
 | TypeScript over JavaScript | Catch errors at build time, better IDE support, self-documenting |
 | Tailwind over custom CSS | Utility-first, consistent spacing/colors, works with Nuxt UI |
 | n8n only when needed | Avoid over-engineering; most app logic belongs in the app, not in a workflow tool |
+
+## Project Catalog
+
+For a full list of all active projects, their locations, GitHub repos, and deployment
+status, see `~/scott-toolkit/references/project-catalog.md`.
+
+**Quick reference — active code projects:**
+- **Life OS** (Personal) — ~/Sites/personal/life-os/ — 97% complete
+- **D2D Payroll** (Advosy) — ~/Sites/advosy/d2d-payroll/ — ~90% complete
+- **BreSco Platform** (Bresco) — ~/Sites/bresco/automation-business/ — v1.1 deployed
+- **Spotio-CF** (Advosy) — ~/Sites/advosy/spotio-cf/ — Code complete
+- **D2D Income Tool** (Advosy) — ~/Sites/advosy/d2d-income-tool/advosy-nuxt/ — Prototype
+- **D2D Apps** (Advosy) — ~/Sites/advosy/d2d-apps/ — Prototype (React)
