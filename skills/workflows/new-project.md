@@ -1,9 +1,10 @@
 # New Project
 
 ## Metadata
-- Last updated: 2026-02-25
-- Version: 1.1
+- Last updated: 2026-02-26
+- Version: 1.2
 - Changelog:
+  - v1.2: Integrate Superpowers plugin — git worktrees, TDD, subagent-driven development, and two-stage code review into Build (Phase 7) and Milestone Review (Phase 8) phases
   - v1.1: Replace binary Gary question with 3 work contexts (Personal/Advosy/Bresco), integrate Impeccable plugin into Design Proof (Phase 6), Build (Phase 7), and Milestone Review (Phase 8) phases
   - v1.0: Initial workflow
 
@@ -201,16 +202,21 @@ Scott approves the visual design of the representative page.
 Begin building the first milestone (usually data model + basic CRUD).
 
 ### Steps
-1. Read tasks/todo.md for the milestone tasks
-2. Read tasks/lessons.md (may be empty for first milestone)
-3. Work through tasks, following the CLAUDE.md behavior rules:
-   - Enter plan mode for non-trivial tasks
-   - Verify each task works before marking it complete
+1. Set up a git worktree for this milestone using `superpowers:using-git-worktrees`
+   — this isolates milestone work on a separate branch without affecting main
+2. Read tasks/todo.md for the milestone tasks
+3. Read tasks/lessons.md (may be empty for first milestone)
+4. Break milestone tasks into small (2-5 minute) chunks using `superpowers:writing-plans`
+5. Execute each task using `superpowers:subagent-driven-development`:
+   - Each task gets a fresh subagent with focused context
+   - TDD is enforced automatically via `superpowers:test-driven-development`
+     (write failing test → implement → refactor)
+   - Each task gets a two-stage code review before completion
    - Update tasks/todo.md as you go
-4. Work autonomously on implementation — don't ask Scott for permission to fix bugs or write code
-5. When building pages with significant UI, use `/impeccable:frontend-design` for high-quality output
-6. For error/edge case hardening on key pages, use `/impeccable:harden`
-7. Check in at the end of the milestone for review
+6. Work autonomously on implementation — don't ask Scott for permission to fix bugs or write code
+7. When building pages with significant UI, use `/impeccable:frontend-design` for high-quality output
+8. For error/edge case hardening on key pages, use `/impeccable:harden`
+9. Check in at the end of the milestone for review
 
 ### Output
 A working first milestone with all tasks completed and verified.
@@ -228,13 +234,17 @@ Demo what was built and get Scott's feedback before proceeding.
    performance, theming, responsive design, and AI slop detection
 2. Run `/impeccable:polish` — final detail pass for alignment, spacing, consistency,
    and interaction states
-3. Summarize what was built in Milestone 1
-4. Present audit results alongside the milestone summary
-5. Show the current state of the app (describe what Scott would see)
-6. List any issues or concerns discovered during the build
-7. Get Scott's feedback
-8. Update CLAUDE.md's Current Status section
-9. Discuss next milestone or scope adjustments
+3. Run `superpowers:requesting-code-review` — two-stage code review (spec compliance +
+   code quality) of the entire milestone. Fix any Critical issues immediately and
+   Important issues before proceeding
+4. Use `superpowers:finishing-a-development-branch` to merge the worktree back to main
+5. Summarize what was built in Milestone 1
+6. Present audit and code review results alongside the milestone summary
+7. Show the current state of the app (describe what Scott would see)
+8. List any issues or concerns discovered during the build
+9. Get Scott's feedback
+10. Update CLAUDE.md's Current Status section
+11. Discuss next milestone or scope adjustments
 
 ### Output
 - Updated CLAUDE.md with current status

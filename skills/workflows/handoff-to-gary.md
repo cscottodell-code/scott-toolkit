@@ -1,9 +1,10 @@
 # Handoff to Gary
 
 ## Metadata
-- Last updated: 2026-02-25
-- Version: 1.0
+- Last updated: 2026-02-26
+- Version: 1.1
 - Changelog:
+  - v1.1: Add Superpowers two-stage code review to Phase 1, add test verification items to Phase 5 handoff checklist
   - v1.0: Initial workflow
 
 ## Purpose
@@ -37,9 +38,13 @@ Review the entire codebase for quality, consistency, and completeness.
 6. **Type safety:** Fix any `any` types or missing type definitions
 7. **Naming consistency:** File names, variable names, function names
 8. **Component structure:** All components follow the project's conventions
+9. **Superpowers code review:** Run `superpowers:requesting-code-review` for a
+   two-stage review (spec compliance + code quality) of the entire codebase.
+   Fix any Critical issues immediately and Important issues before proceeding.
 
 ### Output
-A list of issues found and fixed. If any issues can't be fixed easily, document them.
+A list of issues found and fixed (from both manual checks and Superpowers review).
+If any issues can't be fixed easily, document them.
 
 ### Done when
 The codebase is clean and consistent.
@@ -120,6 +125,8 @@ Final verification that everything is ready.
 - [ ] ARCHITECTURE.md exists and is accurate
 - [ ] Setup instructions work from scratch
 - [ ] All database schema files are up to date
+- [ ] All tests pass (`npm test`)
+- [ ] Test coverage covers critical business logic
 - [ ] Gary has access to the GitHub repo
 - [ ] Known issues and tech debt are documented
 - [ ] No unnecessary files committed (.env, node_modules, .DS_Store)

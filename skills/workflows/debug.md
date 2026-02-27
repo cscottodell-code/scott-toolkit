@@ -1,9 +1,10 @@
 # Debug
 
 ## Metadata
-- Last updated: 2026-02-25
-- Version: 1.0
+- Last updated: 2026-02-26
+- Version: 1.1
 - Changelog:
+  - v1.1: Add TDD-first bug fixing to Phase 4, add Superpowers skill authoring reference to Phase 5
   - v1.0: Initial workflow
 
 ## Purpose
@@ -90,17 +91,19 @@ Work through hypotheses starting with the most likely.
 
 ### Steps
 1. Start with the most likely cause
-2. Implement the fix
-3. Test it — does the original problem go away?
+2. Write a failing test that reproduces the bug (per `superpowers:test-driven-development`)
+   — this ensures the bug can never regress silently
+3. Implement the fix and verify the test passes
+4. Test it — does the original problem go away?
    - **Yes:** Move to Phase 5
    - **No:** Revert the fix, move to the next hypothesis
-4. If all hypotheses fail:
+5. If all hypotheses fail:
    - Gather more evidence (back to Phase 2)
    - Ask Scott for more context
    - Check tasks/lessons.md for similar past issues
 
 ### Output
-A working fix with an explanation of what was wrong and why the fix works.
+A working fix with a regression test and an explanation of what was wrong and why the fix works.
 
 ### Done when
 The original problem is resolved and Scott confirms it works.
@@ -114,8 +117,10 @@ If this was a non-obvious bug, document it so it doesn't happen again.
 1. Was this bug caused by a common pattern? (Could it happen again?)
 2. Should this be added to tasks/lessons.md?
 3. Is this a pattern worth adding to a toolkit reference skill?
-4. Could better error handling have caught this earlier?
-5. If this bug was caused by a prompting, context, or harness mistake, consider
+4. If this bug pattern recurs across projects, consider creating a Superpowers skill
+   using `superpowers:writing-skills` to prevent it in future projects
+5. Could better error handling have caught this earlier?
+6. If this bug was caused by a prompting, context, or harness mistake, consider
    running `/scott:log-error` to capture it in detail.
 
 ### Steps

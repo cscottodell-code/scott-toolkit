@@ -1,9 +1,10 @@
 # New Feature
 
 ## Metadata
-- Last updated: 2026-02-25
-- Version: 1.1
+- Last updated: 2026-02-26
+- Version: 1.2
 - Changelog:
+  - v1.2: Integrate Superpowers plugin — git worktrees, TDD, subagent-driven development, two-stage code review, and branch merging into Build phase (Phase 4)
   - v1.1: Add optional Impeccable design review step (critique + polish) to Build phase for UI-heavy features
   - v1.0: Initial workflow
 
@@ -90,22 +91,31 @@ Scott approves the mini-PRD.
 Implement the feature.
 
 ### Steps
-1. Enter plan mode — break the feature into tasks
-2. Write tasks to tasks/todo.md
-3. If data model changes are needed, do those first:
+1. Create a git worktree for this feature using `superpowers:using-git-worktrees`
+   — this isolates feature work on a separate branch without affecting main
+2. Break the feature into small (2-5 minute) tasks using `superpowers:writing-plans`
+3. Write tasks to tasks/todo.md
+4. If data model changes are needed, do those first:
    - Update schema.surql
    - Update CLAUDE.md's SurrealDB Schema section
-4. Build the feature, following the project's CLAUDE.md behavior rules
-5. Verify each task works before marking it complete
-6. Test the complete feature end-to-end
-7. Design review (if the feature has significant UI changes):
+5. Execute each task using `superpowers:subagent-driven-development`:
+   - Each task gets a fresh subagent with focused context
+   - TDD is enforced automatically via `superpowers:test-driven-development`
+     (write failing test → implement → refactor)
+   - Each task gets a two-stage code review before completion
+6. Verify each task works before marking it complete
+7. Test the complete feature end-to-end
+8. Design review (if the feature has significant UI changes):
    - Run `/impeccable:critique` for visual quality feedback
    - Address critical issues
    - Run `/impeccable:polish` as a final detail pass
    Skip for backend-only changes or minor UI tweaks.
+9. Run `superpowers:requesting-code-review` — two-stage review of the complete feature.
+   Fix any Critical issues immediately and Important issues before proceeding
+10. Use `superpowers:finishing-a-development-branch` to merge the worktree back to main
 
 ### Output
-Working feature, verified and tested.
+Working feature, verified, tested, and code-reviewed.
 
 ### Done when
 All acceptance criteria from the mini-PRD are met.
