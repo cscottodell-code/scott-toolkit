@@ -1,5 +1,13 @@
 # Toolkit Changelog
 
+## v1.2.0 - 2026-02-27
+- **debug v1.2:** Require human verification of fix before resolution (Phase 4)
+- **new-project v1.3:** Add post-build test coverage review with /gsd:add-tests (Phase 7)
+- **new-feature v1.3:** Add post-build test coverage review with /gsd:add-tests (Phase 4)
+- **handoff-to-gary v1.2:** Add test coverage assessment with /gsd:add-tests (Phase 1)
+- **ai-orchestration-assessment:** Update GSD evidence to reflect v1.21.x capabilities
+- Triggered by: GSD versions 1.21.0 and 1.21.1 release
+
 ## v1.1.0 - 2026-02-26
 - Integrate Superpowers plugin (v4.3.1) across all workflows
 - **new-project v1.2:** Git worktrees, TDD, subagent-driven development in Phase 7 (Build); two-stage code review and branch merging in Phase 8 (Milestone Review)

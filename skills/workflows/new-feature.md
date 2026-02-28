@@ -1,9 +1,10 @@
 # New Feature
 
 ## Metadata
-- Last updated: 2026-02-26
-- Version: 1.2
+- Last updated: 2026-02-27
+- Version: 1.3
 - Changelog:
+  - v1.3: Add post-build test coverage review with /gsd:add-tests (Phase 4)
   - v1.2: Integrate Superpowers plugin — git worktrees, TDD, subagent-driven development, two-stage code review, and branch merging into Build phase (Phase 4)
   - v1.1: Add optional Impeccable design review step (critique + polish) to Build phase for UI-heavy features
   - v1.0: Initial workflow
@@ -105,14 +106,18 @@ Implement the feature.
    - Each task gets a two-stage code review before completion
 6. Verify each task works before marking it complete
 7. Test the complete feature end-to-end
-8. Design review (if the feature has significant UI changes):
+8. Review test coverage for the new feature:
+   - If coverage is thin on critical logic, use `/gsd:add-tests` to generate
+     additional tests for the completed feature
+   - Focus on edge cases and integration points with existing code
+9. Design review (if the feature has significant UI changes):
    - Run `/impeccable:critique` for visual quality feedback
    - Address critical issues
    - Run `/impeccable:polish` as a final detail pass
    Skip for backend-only changes or minor UI tweaks.
-9. Run `superpowers:requesting-code-review` — two-stage review of the complete feature.
+10. Run `superpowers:requesting-code-review` — two-stage review of the complete feature.
    Fix any Critical issues immediately and Important issues before proceeding
-10. Use `superpowers:finishing-a-development-branch` to merge the worktree back to main
+11. Use `superpowers:finishing-a-development-branch` to merge the worktree back to main
 
 ### Output
 Working feature, verified, tested, and code-reviewed.

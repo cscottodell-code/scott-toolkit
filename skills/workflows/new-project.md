@@ -1,9 +1,10 @@
 # New Project
 
 ## Metadata
-- Last updated: 2026-02-26
-- Version: 1.2
+- Last updated: 2026-02-27
+- Version: 1.3
 - Changelog:
+  - v1.3: Add post-build test coverage review with /gsd:add-tests (Phase 7)
   - v1.2: Integrate Superpowers plugin — git worktrees, TDD, subagent-driven development, and two-stage code review into Build (Phase 7) and Milestone Review (Phase 8) phases
   - v1.1: Replace binary Gary question with 3 work contexts (Personal/Advosy/Bresco), integrate Impeccable plugin into Design Proof (Phase 6), Build (Phase 7), and Milestone Review (Phase 8) phases
   - v1.0: Initial workflow
@@ -216,7 +217,12 @@ Begin building the first milestone (usually data model + basic CRUD).
 6. Work autonomously on implementation — don't ask Scott for permission to fix bugs or write code
 7. When building pages with significant UI, use `/impeccable:frontend-design` for high-quality output
 8. For error/edge case hardening on key pages, use `/impeccable:harden`
-9. Check in at the end of the milestone for review
+9. After all milestone tasks are complete, review test coverage:
+   - Run the project's test suite to verify all tests pass
+   - If coverage is thin on critical business logic, use `/gsd:add-tests` to generate
+     additional tests for the completed milestone
+   - Focus on data model operations and key user flows
+10. Check in at the end of the milestone for review
 
 ### Output
 A working first milestone with all tasks completed and verified.

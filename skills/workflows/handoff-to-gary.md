@@ -1,9 +1,10 @@
 # Handoff to Gary
 
 ## Metadata
-- Last updated: 2026-02-26
-- Version: 1.1
+- Last updated: 2026-02-27
+- Version: 1.2
 - Changelog:
+  - v1.2: Add test coverage assessment with /gsd:add-tests (Phase 1)
   - v1.1: Add Superpowers two-stage code review to Phase 1, add test verification items to Phase 5 handoff checklist
   - v1.0: Initial workflow
 
@@ -41,6 +42,9 @@ Review the entire codebase for quality, consistency, and completeness.
 9. **Superpowers code review:** Run `superpowers:requesting-code-review` for a
    two-stage review (spec compliance + code quality) of the entire codebase.
    Fix any Critical issues immediately and Important issues before proceeding.
+10. **Test coverage:** Review test suite completeness. If critical business logic
+    lacks tests, use `/gsd:add-tests` to fill gaps before handoff — Gary shouldn't
+    have to write tests for prototype logic.
 
 ### Output
 A list of issues found and fixed (from both manual checks and Superpowers review).

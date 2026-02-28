@@ -1,9 +1,10 @@
 # Debug
 
 ## Metadata
-- Last updated: 2026-02-26
-- Version: 1.1
+- Last updated: 2026-02-27
+- Version: 1.2
 - Changelog:
+  - v1.2: Require human verification of fix before resolution (Phase 4)
   - v1.1: Add TDD-first bug fixing to Phase 4, add Superpowers skill authoring reference to Phase 5
   - v1.0: Initial workflow
 
@@ -95,7 +96,9 @@ Work through hypotheses starting with the most likely.
    — this ensures the bug can never regress silently
 3. Implement the fix and verify the test passes
 4. Test it — does the original problem go away?
-   - **Yes:** Move to Phase 5
+   - **Yes:** Demonstrate the fix to Scott. Show what was broken, what caused it,
+     and how the fix resolves it. Get Scott's confirmation before moving to Phase 5.
+     (Don't just verify it yourself — the human must sign off on the resolution.)
    - **No:** Revert the fix, move to the next hypothesis
 5. If all hypotheses fail:
    - Gather more evidence (back to Phase 2)
