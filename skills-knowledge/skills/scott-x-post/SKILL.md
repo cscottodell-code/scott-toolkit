@@ -83,7 +83,7 @@ updates in the file but stay true to the source's structure and intent.
 
 ## Step 6: Save Location
 
-Save to `~/Scott/growth-os/raw/research/global/` by default. No need to ask unless Scott specifies a different path.
+Save to `~/Scott/growth-os/raw/_inbox/` by default. No need to ask unless Scott specifies a different path. Captures land in `_inbox` and graduate to a context (`raw/<context>/`) then `wiki/<context>/` per the vault ingest flow.
 
 ## Step 7: Write the Source File
 

@@ -68,7 +68,7 @@ If the video references specific tools, versions, frameworks, or stats, search f
 
 ## Step 5: Save Location
 
-Save to `~/Scott/growth-os/raw/research/global/` by default. No need to ask unless Scott specifies a different path.
+Save to `~/Scott/growth-os/raw/_inbox/` by default. No need to ask unless Scott specifies a different path. Captures land in `_inbox` and graduate to a context (`raw/<context>/`) then `wiki/<context>/` per the vault ingest flow.
 
 ## Step 6: Write the Source File
 
